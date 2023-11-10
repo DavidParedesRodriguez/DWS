@@ -14,13 +14,13 @@
     y el operador nave espacial*/
 
     $numero1 = 5;
-    $numero2 = 10;
+    $numero2 = 5;
 
     $resultado = $numero1 <=> $numero2;
 
     switch ($resultado) {
         case 0:
-            echo  "La variable1, la cual su valor es ". $numero1 ." , es igual a la variable2, la cual su valor es ". $numero2;
+            echo "Los números son iguales";
             break;
 
         case -1:
