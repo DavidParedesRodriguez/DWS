@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Imagen Arriba</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #032d30; 
+        }
+
+        #contenedor {
+            text-align: center;
+            margin-top: 10px; 
+        }
+
+        #contenedor img {
+            width: 100%;
+            height: auto;
+        }
+
+        #botones {
+            margin-top: 10px; 
+        }
+
+        button {
+            margin: 0 40px; 
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: #d8ad5d; 
+            color: white; 
+            border-radius: 10px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <img src="./img/portada.PNG" alt="Descripción de la imagen">
+    </div>
+
+    <div id="botones">
+        
+        <form action="formulario.php" method="post" style="display: inline;">
+            <button type="submit">Añadir Hotel</button>
+        </form>
+        
+       
+        <form action="listar_hoteles.php" method="post" style="display: inline;">
+            <button type="submit" class="boton-listar">Listar Hoteles</button>
+        </form>
+    </div>
+</body>
+</html>
