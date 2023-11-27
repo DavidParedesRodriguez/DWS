@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 8a</title>
+  </head>
+  <body>
+    <h2>Validar contenido</h2>
+
+    <form action="ejercicio8b.php" method="post">
+      <label for="dato">Introduce el dato:</label>
+      <input type="text" id="dato" name="dato" required /><br />
+
+      <label>Escoger validación:</label>
+      <br />
+      <input type="radio" id="email" name="tipo" value="email" required />
+      <label for="email">E-mail</label>
+
+      <input type="radio" id="dni" name="tipo" value="dni" />
+      <label for="dni">DNI</label>
+
+      <input type="radio" id="numeros" name="tipo" value="numeros" />
+      <label for="numeros">Números</label>
+
+      <br />
+
+      <input type="submit" value="Comprobar" />
+    </form>
+  </body>
+</html>

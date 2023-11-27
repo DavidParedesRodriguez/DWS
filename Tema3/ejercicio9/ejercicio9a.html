@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Alta de Usuario</title>
+    <style>
+      form {
+        width: 800px;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin: 0 auto;
+      }
+
+      label {
+        width: 20%;
+        font-weight: 800;
+        display: inline-block;
+        text-align: left;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="file"],
+      input[type="checkbox"],
+      select {
+        width: 70%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"],
+      input[type="reset"] {
+        width: 70%;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      input[type="reset"] {
+        background-color: #4c8baf;
+        color: white;
+      }
+
+      input[type="reset"]:hover {
+        background-color: #4546a0;
+      }
+
+      .panelButtons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .error {
+        color: red;
+        font-weight: 600;
+      }
+
+      .departamento-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .departamento-label {
+      width: 20%;
+      text-align: left;
+    }
+
+    .departamento-checkboxes {
+      width: 50%;
+      display: flex;
+    }
+
+    .departamento-checkbox {
+      margin-right: 5px;
+    }
+    </style>
+  </head>
+  <body>
+    <form action="ejercicio9b.php" method="post" enctype="multipart/form-data">
+      <h2>Alta usuario(Formulario)</h2>
+
+      <label for="nombre">Nombre y apellidos:</label>
+      <input type="text" id="nombre" name="nombre" required />
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="usuario">Nombre de Usuario:</label>
+      <input type="text" id="usuario" name="usuario" required />
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required />
+
+      <label for="confirmar_password">Confirmar Contraseña:</label>
+      <input
+        type="password"
+        id="confirmar_password"
+        name="confirmar_password"
+        required
+      />
+
+      <label for="bloqueado">Bloqueado:</label>
+      <input type="radio" id="si" name="bloqueado" value="si" required />
+      <label for="si">Sí</label>
+      <input type="radio" id="no" name="bloqueado" value="no" required />
+      <label for="no">No</label>
+      
+      <br><br>
+
+      <div class="departamento-container">
+        <label class="departamento-label" for="departamento">Departamento:</label>
+        <br>
+        <div class="departamento-checkboxes">
+          <input type="checkbox" id="comercial" name="departamento[]" value="comercial" class="departamento-checkbox">
+          <label for="comercial">Comercial</label>
+  
+          <input type="checkbox" id="marketing" name="departamento[]" value="marketing" class="departamento-checkbox">
+          <label for="marketing">Marketing</label>
+  
+          <input type="checkbox" id="direccion" name="departamento[]" value="direccion" class="departamento-checkbox">
+          <label for="direccion">Dirección</label>
+        </div>
+      </div>
+
+      <div class="panelButtons">
+        <input type="submit" value="Enviar" />
+        <input type="reset" value="Limpiar" />
+      </div>
+    </form>
+  </body>
+</html>
