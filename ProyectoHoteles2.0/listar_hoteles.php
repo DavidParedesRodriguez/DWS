@@ -86,7 +86,7 @@
             </tr>
 
             <?php
-            // Conexión a la base de datos (reemplaza con tus propias credenciales)
+            // Conexión a la base de datos
             $servername = "localhost";
             $username = "David";
             $password = "Par280502";

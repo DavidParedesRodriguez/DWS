@@ -1,71 +1,119 @@
-<?php
-// Conexión a la base de datos (reemplaza con tus propias credenciales)
-$servername = "localhost";
-$username = "David";
-$password = "Par280502";
-$dbname = "hotel";
+<!DOCTYPE html>
+<html lang="en">
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Agrega el enlace a tu archivo de estilos común -->
+    <title>Restaurar Base de Datos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #032d30;
+            color: white;
+            font-family: Arial, sans-serif; /* Ajusta el tipo de letra según tus preferencias */
+        }
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
+        #contenido-container {
+            text-align: center;
+        }
 
-// Script para restaurar la tabla 'hoteles'
-$sqlRestaurar = "
-    -- Elimina la tabla 'hoteles' si existe
-    DROP TABLE IF EXISTS hoteles;
-";
+        #mensaje {
+            margin-top: 20px;
+        }
 
-// Ejecutar el script para eliminar la tabla
-if ($conn->query($sqlRestaurar) === TRUE) {
-    echo "Tabla 'hoteles' eliminada correctamente.\n";
+        #boton-volver {
+            margin-top: 20px;
+        }
 
-    // Script para crear la tabla 'hoteles' de nuevo
-    $sqlCrearTabla = "
-        -- Crea la tabla 'hoteles' de nuevo
-        CREATE TABLE hoteles (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            nombre VARCHAR(255) NOT NULL,
-            categoria INT NOT NULL,
-            numero_habitacion VARCHAR(255) NOT NULL,
-            poblacion VARCHAR(255) NOT NULL,
-            direccion VARCHAR(255) NOT NULL
-        );
-    ";
+        button {
+            margin: 0;
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: #d8ad5d;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 
-    // Ejecutar el script para crear la tabla de nuevo
-    if ($conn->query($sqlCrearTabla) === TRUE) {
-        echo "Tabla 'hoteles' creada correctamente.\n";
+<body>
+    <div id="contenido-container">
+        <?php
+        // Conexión a la base de datos
+        $servername = "localhost";
+        $username = "David";
+        $password = "Par280502";
+        $dbname = "hotel";
 
-        // Inserción de datos por defecto
-        $sqlInsercion = "
-            INSERT INTO hoteles (nombre, categoria, numero_habitacion, poblacion, direccion)
-            VALUES
-                ('Abashiri (NH)', 3, 168, '46013 Valencia', 'Avenida Ausias March, 59'),
-                ('Abba Acteon (Abba Hoteles)', 4, 189, '46023 Valencia', 'Escultor Vicente Bertrán'),
-                ('Acta Atarazanas', 4, 42, '46011 Valencia', 'Plaza Tribunal de las Aguas, 4'),
-                ('Acta del Carmen', 3, 25, '46003 Valencia', 'Blanquerías, 11'),
-                ('AC Valencia (AC Hotels)', 4, 183, '46023 Valencia', 'Avenida de Francia, 67'),
-                ('Ad Hoc Monumental Valencia', 3, 28, '46003 Valencia', 'Boix, 4'),
-                ('Alkazar', 1, 18, '46002 Valencia', 'Mosén Femades, 11');
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Error de conexión: " . $conn->connect_error);
+        }
+
+        $sqlRestaurar = "
+            DROP TABLE IF EXISTS hoteles;
         ";
 
-        // Ejecutar la inserción de datos por defecto
-        if ($conn->query($sqlInsercion) === TRUE) {
-            echo "Datos por defecto insertados correctamente.\n";
-        } else {
-            echo "Error al insertar datos por defecto: " . $conn->error;
-        }
-    } else {
-        echo "Error al crear la tabla 'hoteles': " . $conn->error;
-    }
-} else {
-    echo "Error al eliminar la tabla 'hoteles': " . $conn->error;
-}
+        if ($conn->query($sqlRestaurar) === TRUE) {
+            echo "<p>Tabla 'hoteles' eliminada correctamente.</p>";
 
-// Cerrar conexión
-$conn->close();
-?>
+            $sqlCrearTabla = "
+                CREATE TABLE hoteles (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    nombre VARCHAR(255) NOT NULL,
+                    categoria INT NOT NULL,
+                    numero_habitacion VARCHAR(255) NOT NULL,
+                    poblacion VARCHAR(255) NOT NULL,
+                    direccion VARCHAR(255) NOT NULL
+                );
+            ";
+
+            if ($conn->query($sqlCrearTabla) === TRUE) {
+                echo "<p>Tabla 'hoteles' creada correctamente.</p>";
+
+                $sqlInsercion = "
+                    INSERT INTO hoteles (nombre, categoria, numero_habitacion, poblacion, direccion)
+                    VALUES
+                        ('Abashiri (NH)', 3, 168, '46013 Valencia', 'Avenida Ausias March, 59'),
+                        ('Abba Acteon (Abba Hoteles)', 4, 189, '46023 Valencia', 'Escultor Vicente Bertrán'),
+                        ('Acta Atarazanas', 4, 42, '46011 Valencia', 'Plaza Tribunal de las Aguas, 4'),
+                        ('Acta del Carmen', 3, 25, '46003 Valencia', 'Blanquerías, 11'),
+                        ('AC Valencia (AC Hotels)', 4, 183, '46023 Valencia', 'Avenida de Francia, 67'),
+                        ('Ad Hoc Monumental Valencia', 3, 28, '46003 Valencia', 'Boix, 4'),
+                        ('Alkazar', 1, 18, '46002 Valencia', 'Mosén Femades, 11');
+                ";
+
+                if ($conn->query($sqlInsercion) === TRUE) {
+                    echo "<p>Datos por defecto insertados correctamente.</p>";
+                } else {
+                    echo "<p>Error al insertar datos por defecto: " . $conn->error . "</p>";
+                }
+            } else {
+                echo "<p>Error al crear la tabla 'hoteles': " . $conn->error . "</p>";
+            }
+        } else {
+            echo "<p>Error al eliminar la tabla 'hoteles': " . $conn->error . "</p>";
+        }
+
+        // Cerrar conexión
+        $conn->close();
+        ?>
+        <!-- Botón para volver -->
+        <div id="boton-volver">
+            <a href="index.html">
+                <button type="button">Volver al inicio</button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
+
