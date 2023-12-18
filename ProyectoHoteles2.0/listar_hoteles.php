@@ -86,32 +86,45 @@
             </tr>
 
             <?php
+            // Conexión a la base de datos (reemplaza con tus propias credenciales)
+            $servername = "localhost";
+            $username = "David";
+            $password = "Par280502";
+            $dbname = "hotel";
 
-            $contenidoCSV = file_get_contents('hoteles.csv');
+            // Crear conexión
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-
-            $lineas = explode(PHP_EOL, $contenidoCSV);
-            foreach ($lineas as $linea) {
-
-                if (!empty($linea)) {
-                    $datosHotel = explode(',', $linea);
-
-                    if (count($datosHotel) >= 5) {
-                        echo '<tr>';
-                        foreach ($datosHotel as $dato) {
-                            echo '<td>' . $dato . '</td>';
-                        }
-                        echo '</tr>';
-                    } else {
-                        echo '<p>Error en el formato de los datos</p>';
-                    }
-                }
+            // Verificar la conexión
+            if ($conn->connect_error) {
+                die("Error de conexión: " . $conn->connect_error);
             }
+
+            // Consulta SQL para obtener los hoteles
+            $sql = "SELECT nombre, categoria, numero_habitacion, poblacion, direccion FROM hoteles";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Imprimir los datos en la tabla
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>{$row['nombre']}</td>
+                            <td>{$row['categoria']}</td>
+                            <td>{$row['numero_habitacion']}</td>
+                            <td>{$row['poblacion']}</td>
+                            <td>{$row['direccion']}</td>
+                          </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5'>No hay hoteles disponibles.</td></tr>";
+            }
+
+            // Cerrar conexión
+            $conn->close();
             ?>
         </table>
 
         <div id="botones">
-
             <a href="index.html" id="volver-btn">
                 <button type="button">Volver al inicio</button>
             </a>

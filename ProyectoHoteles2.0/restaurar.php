@@ -1,8 +1,8 @@
 <?php
 // Conexión a la base de datos (reemplaza con tus propias credenciales)
 $servername = "localhost";
-$username = "root";
-$password = "root";
+$username = "David";
+$password = "Par280502";
 $dbname = "hotel";
 
 // Crear conexión

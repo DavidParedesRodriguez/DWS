@@ -26,7 +26,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-
         label {
             display: block;
             margin: 10px 0;
@@ -39,7 +38,6 @@
             box-sizing: border-box;
         }
 
-       
         #botones {
             display: flex;
             justify-content: space-between;
@@ -56,7 +54,6 @@
             cursor: pointer;
         }
 
-      
         #volver-btn {
             background-color: #888; 
             text-decoration: none; 
@@ -66,13 +63,12 @@
 <body>
     <div id="formulario-container">
         <?php
-        
         if (isset($_GET['exito']) && $_GET['exito'] == 1) {
             echo '<div style="margin-top: 10px;"><p style="color: green;">Hotel añadido correctamente.</p></div>';
         }
         ?>
 
-        <form action="guardar_hotel.php" method="post">
+        <form action="añadir_hotel.php" method="post">
             <label for="nombre">Nombre del hotel:</label>
             <input type="text" name="nombre" id="nombre" required>
             
@@ -88,10 +84,8 @@
             <label for="direccion">Dirección:</label>
             <input type="text" name="direccion" id="direccion" required>
 
-            
             <div id="botones">
                 <button type="submit">Añadir Hotel</button>
-                
                 
                 <a href="index.html" id="volver-btn">
                     <button type="button">Volver al inicio</button>
@@ -101,7 +95,3 @@
     </div>
 </body>
 </html>
-
-
-
-
