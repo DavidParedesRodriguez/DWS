@@ -1,24 +1,3 @@
-<?php
-// Conexión a la base de datos
-$servername = "localhost";
-$username = "David";
-$password = "Par280502";
-$dbname = "hotel";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
-
-// Obtener la lista de hoteles para el menú desplegable
-$sql = "SELECT id, nombre FROM hoteles";
-$result = $conn->query($sql);
-
-// Cerrar conexión
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +5,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Seleccionar Hotel para Modificar</title>
+    <title>Seleccionar y Modificar Hotel</title>
     <style>
         body {
             margin: 0;
@@ -40,22 +19,36 @@ $conn->close();
             font-family: Arial, sans-serif;
         }
 
-        #seleccion-container {
+        #contenedor-formularios {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #seleccionar-container {
             width: 100%;
             max-width: 600px;
             text-align: center;
             background-color: white;
-            padding: 20px;
+            padding: 75px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: -60px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
         }
 
         select {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
+            margin: 5px 0;
             box-sizing: border-box;
         }
+
+      
 
         button {
             margin: 0;
@@ -65,38 +58,58 @@ $conn->close();
             color: white;
             border-radius: 10px;
             cursor: pointer;
-        }
-
-        #volver-btn {
-            background-color: #888;
-            text-decoration: none;
+            
         }
     </style>
 </head>
 
 <body>
-    <div id="seleccion-container">
-        <h2>Seleccionar Hotel para Modificar</h2>
-
-        <form action="formulario_modificar_hotel.php" method="post">
+    <div id="contenedor-formularios">
+        <!-- Lista de hoteles con formulario para seleccionar uno -->
+        <form action="formulario_modificar_hotel.php" method="post" id="seleccionar-container">
             <label for="hotel">Selecciona un hotel:</label>
-            <select name="hotel" id="hotel" required>
+            <select name="hotel" id="hotel">
                 <?php
-                while ($row = $result->fetch_assoc()) {
-                    echo '<option value="' . $row["id"] . '">' . $row["nombre"] . '</option>';
+                // Conexión a la base de datos
+                $servername = "localhost";
+                $username = "David";
+                $password = "Par280502";
+                $dbname = "hotel";
+
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                if ($conn->connect_error) {
+                    die("Error de conexión: " . $conn->connect_error);
                 }
+
+                // Obtener nombres de hoteles desde la base de datos
+                $sql = "SELECT nombre FROM hoteles";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . $row["nombre"] . '">' . $row["nombre"] . '</option>';
+                    }
+                } else {
+                    echo '<option value="" disabled>No hay hoteles disponibles</option>';
+                }
+
+                // Cerrar conexión
+                $conn->close();
                 ?>
             </select>
-
-            <button type="submit">Modificar Hotel</button>
+            <div id="botones-container">
+                <button type="submit">Modificar Hotel</button>
+            </div>
         </form>
 
-        <div id="botones">
-            <a href="index.html" id="volver-btn">
-                <button type="button">Volver al inicio</button>
-            </a>
-        </div>
+        
+        <form action="index.html" method="get">
+            <button type="submit">Volver al Inicio</button>
+        </form>
     </div>
 </body>
 
 </html>
+
+
