@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <h1>Control de Acceso</h1>
+  </head>
+  <body>
+    <form action="ejercicio11b.php" method="post">
+      <p>
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="usuario" required />
+      </p>
+
+      <p>
+        <label for="clave">Clave:</label>
+        <input type="password" id="clave" name="clave" required />
+      </p>
+
+      <p>
+        <button type="submit">Enviar</button>
+        <button type="button" onclick="borrarFormulario()">Borrar</button>
+      </p>
+    </form>
+
+    <script>
+      function borrarFormulario() {
+        document.getElementById("usuario").value = "";
+        document.getElementById("clave").value = "";
+      }
+    </script>
+  </body>
+</html>
