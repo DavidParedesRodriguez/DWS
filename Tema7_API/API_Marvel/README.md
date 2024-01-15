@@ -1,11 +1,12 @@
 # Como conectarnos a la API
 
-1. Nos registramos en la cuenta de la API de Marvel, se nos generará 
-<br>
+1. Nos registramos en la cuenta de la API de Marvel, se nos generará:
+
 · Clave pública: a020ce7d08119889a71cafc466d8f631
 <br>
 . Clave privada: 3533266013cb4b99e4110dc35b3f47a9e62d28d4
 
+<br>
 2. Autenticación para aplicaciones del lado del servidor
 
 Las aplicaciones del lado del servidor deben pasar dos parámetros además del parámetro apikey:
