@@ -6,7 +6,7 @@
 <br>
 . Clave privada: 3533266013cb4b99e4110dc35b3f47a9e62d28d4
 
-<br>
+
 2. Autenticación para aplicaciones del lado del servidor
 
 Las aplicaciones del lado del servidor deben pasar dos parámetros además del parámetro apikey:
