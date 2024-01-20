@@ -22,7 +22,7 @@ if ($data) {
     $actualizacion = $data['updated_at'];
 
     // Mostrar los resultados en una tabla
-    echo $valor.' ultima actualización: '.$actualizacion;
+    echo $valor.'<br> ultima actualización: '.$actualizacion;
 } else {
     echo 'Error al consultar la API.';
 } 
