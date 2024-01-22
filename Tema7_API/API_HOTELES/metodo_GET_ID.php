@@ -1,75 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-       body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #032d30;
-            color: white;
-        }
-
-        #listado-container {
-            width: 80%;
-            max-width: 800px;
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid #d8ad5d;
-
-        }
-
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #d8ad5d;
-            color: white;
-        }
-
-        #botones {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        button {
-            margin: 0;
-            padding: 10px 20px;
-            font-size: 20px;
-            background-color: #d8ad5d;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-
-        #volver-btn {
-            background-color: #888;
-            text-decoration: none;
-        }
-    </style>
-    <title>Detalle del Hotel</title>
-</head>
-<body>
 
 <?php
 
@@ -151,5 +79,4 @@ if ($idHotel) {
 
 ?>
 
-</body>
-</html>
+

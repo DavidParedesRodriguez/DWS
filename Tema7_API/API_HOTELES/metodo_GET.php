@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de Hoteles</title>
-</head>
-<body>
+
 
 <?php
 
@@ -66,7 +59,9 @@ function listar() {
     return $hoteles;
 }
 
+//como creamos un archivo por cada método no hace falta redireccionar, llama directamente en la url el nombre del archivo
 // Redireccionar según la opción especificada en la URL
+/*
 if (isset($_GET['opcion'])) {
     if ($_GET['opcion'] == 'listar') {
         echo json_encode(listar());
@@ -76,8 +71,7 @@ if (isset($_GET['opcion'])) {
 } else {
     echo json_encode(error("No se ha especificado la opción"));
 }
-
+*/
 ?>
 
-</body>
-</html>
+
