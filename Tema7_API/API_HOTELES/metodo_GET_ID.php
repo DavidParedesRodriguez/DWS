@@ -1,6 +1,7 @@
 
 <?php
 
+
 // Función para gestionar los errores y devolver un mensaje
 function error($mensaje) {
     return "<p>Error: $mensaje</p>";
@@ -71,7 +72,7 @@ if ($idHotel) {
 
         echo "</table>";
     } else {
-        echo $hotel; // Mostrar mensaje de error
+        echo $hotel; 
     }
 } else {
     echo error("No se ha proporcionado un ID válido.");

@@ -6,7 +6,8 @@
 header('Content-Type: application/json');
 
 // Función para gestionar los errores y devolver un JSON
-function error($mensaje) {
+function error($mensaje)
+{
     $respuesta = array(
         "tipo" => "error",
         "msj" => $mensaje
@@ -15,7 +16,8 @@ function error($mensaje) {
 }
 
 // Función para la conexión a la base de datos
-function conectar() {
+function conectar()
+{
     $servername = "localhost";
     $username = "David";
     $password = "Par280502";
@@ -25,7 +27,8 @@ function conectar() {
 }
 
 // Función para generar la URL completa
-function url($segmento) {
+function url($segmento)
+{
     if (isset($_SERVER['HTTPS'])) {
         $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
     } else {
@@ -35,7 +38,8 @@ function url($segmento) {
 }
 
 // Función para listar todos los datos de la base de datos
-function listar() {
+function listar()
+{
     $hoteles = array();
     try {
         $db = conectar();
@@ -53,12 +57,28 @@ function listar() {
             );
             array_push($hoteles, $data);
         }
+
+        // Devolver el resultado en formato JSON
+        echo json_encode($hoteles);
     } catch (PDOException $e) {
         return error($e->getMessage());
     }
     return $hoteles;
 }
 
+// Obtener la opción de la URL
+$opcion = isset($_GET['opcion']) ? $_GET['opcion'] : '';
+
+// Utilizar un switch para determinar la acción
+switch ($opcion) {
+    case 'listar':
+        listar();
+        break;
+    default:
+        // Devolver respuesta de error si no se ha especificado una opción válida
+        echo error("No se ha especificado una opción válida");
+        break;
+}
 //como creamos un archivo por cada método no hace falta redireccionar, llama directamente en la url el nombre del archivo
 // Redireccionar según la opción especificada en la URL
 /*
