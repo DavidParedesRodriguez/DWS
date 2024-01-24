@@ -7,12 +7,14 @@ function error($mensaje) {
     return "<p>Error: $mensaje</p>";
 }
 
-// Función para la conexión a la base de datos
-function conectar() {
-    $usuario = "root";
-    $password = "root";
-    $db = new PDO('mysql:host=localhost;dbname=hotel', $usuario, $password);
-    return $db;
+function conectar()
+{
+    $servername = "localhost";
+    $username = "David";
+    $password = "Par280502";
+    $dbname = "hotel";
+    $conn = new PDO('mysql:host=' . $servername . ';dbname=' . $dbname, $username, $password);
+    return $conn;
 }
 
 // Función para obtener un hotel por su ID
