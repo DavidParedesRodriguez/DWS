@@ -14,7 +14,12 @@
     const LIMITE = 700;
     $varaibleAleatoria = rand(1,LIMITE);
 
-    echo "El número aleatorio es ". $varaibleAleatoria;
+    if($varaibleAleatoria % 2 == 0){
+        echo "El número aleatorio es ". $varaibleAleatoria ." y es par";
+    }else{
+        echo "El número aleatorio es ". $varaibleAleatoria ." y no es par";
+    }
+    
 
     
    
